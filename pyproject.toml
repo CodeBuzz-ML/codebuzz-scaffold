@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=80.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codebuzz-scaffold"
+version = "0.1.0"
+description = "A modern, extensible CLI for scaffolding software projects with reusable templates and automated setup."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    { name = "Advait Muley" }
+]
+
+[project.scripts]
+scaffold = "scaffold.cli:main"
