@@ -15,3 +15,9 @@ authors = [
 
 [project.scripts]
 scaffold = "scaffold.cli:main"
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

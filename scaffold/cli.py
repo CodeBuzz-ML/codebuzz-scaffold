@@ -1,29 +1,32 @@
 import argparse
+
 from scaffold import __version__
+from scaffold.ui.menu import show_header, show_menu
+
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog='scaffold',
+        prog="scaffold",
         description="CodeBuzz Scaffold - A modern project scaffolding CLI.",
     )
 
     parser.add_argument(
-        "-v", "--version",
+        "-v",
+        "--version",
         action="version",
-        version=f"%(prog)s {__version__}"
+        version=f"%(prog)s {__version__}",
     )
 
-    subparsers = parser.add_subparsers(
-        dest="command",
-        required=True,
-    )
-
-    create_parser = subparsers.add_parser(
-        "create",
-        help="Create a new project."
-    )   
-    create_parser.add_argument(
-        "name",
-        help="Project name."
-    )
     return parser
+
+
+def run_interactive() -> None:
+    show_header()
+    show_menu()
+
+
+def main() -> None:
+    parser = build_parser()
+    parser.parse_args()
+
+    run_interactive()
