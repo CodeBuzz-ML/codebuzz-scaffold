@@ -19,3 +19,23 @@ ERROR = Fore.RED
 BOLD = Style.BRIGHT
 DIM = Style.DIM
 RESET = Style.RESET_ALL
+
+#Add print functions for colors
+def print_accent(text: str) -> None:
+    print(f"{ACCENT}{text}{RESET}")
+
+
+def print_success(text: str) -> None:
+    print(f"{SUCCESS}{text}{RESET}")
+
+
+def print_warning(text: str) -> None:
+    print(f"{WARNING}{text}{RESET}")
+
+
+def print_error(text: str) -> None:
+    print(f"{ERROR}{text}{RESET}")
+
+
+def print_primary(text: str) -> None:
+    print(f"{PRIMARY}{text}{RESET}")

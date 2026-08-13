@@ -1,10 +1,4 @@
-from scaffold.ui.colors import (
-    ACCENT,
-    BOLD,
-    HIGHLIGHT,
-    PRIMARY,
-    RESET,
-)
+from scaffold.ui.colors import ACCENT, BOLD, ERROR, HIGHLIGHT, PRIMARY, RESET
 
 
 def show_header() -> None:
@@ -29,3 +23,20 @@ def show_menu() -> None:
     print(f"{ACCENT}[5]{RESET}  Exit")
 
     print()
+
+
+def get_menu_choice() -> int:
+    while True:
+        try:
+            choice = int(input(f"{ACCENT}Select an option [1-5]: {RESET}").strip())
+
+            if 1 <= choice <= 5:
+                return choice
+            else:
+                print(f"{ERROR}Please enter a number between 1 and 5.")
+        except ValueError:
+            print(f"{ERROR}Invalid input. Please enter a number between 1 and 5.")
+        except KeyboardInterrupt:
+            print()
+            print(f"{HIGHLIGHT}Exiting CodeBuzz Scaffold{RESET}")
+            raise SystemExit
