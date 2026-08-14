@@ -1,26 +1,18 @@
-from scaffold.ui.colors import ACCENT, BOLD, ERROR, HIGHLIGHT, PRIMARY, RESET
+from scaffold import __version__, ui
+from scaffold.ui.colors import ACCENT, ERROR, HIGHLIGHT, RESET
 
-
-def show_header() -> None:
-    width = 44
-
-    print()
-    print(f"{PRIMARY}{BOLD}╭{'─' * width}╮")
-    print(f"{PRIMARY}{BOLD}│{'CODEBUZZ SCAFFOLD':^{width}}│")
-    print(f"{PRIMARY}{BOLD}│{'Project creation made easy':^{width}}│")
-    print(f"{PRIMARY}{BOLD}╰{'─' * width}╯")
-    print()
+ui.header(50)  # Display the header with a width of 50
 
 
 def show_menu() -> None:
-    print(f"{HIGHLIGHT}{BOLD}What would you like to do?{RESET}")
+    ui.primary("What would you like to do?")
     print()
 
-    print(f"{ACCENT}[1]{RESET}  Create a new project")
-    print(f"{ACCENT}[2]{RESET}  Browse templates")
-    print(f"{ACCENT}[3]{RESET}  Settings")
-    print(f"{ACCENT}[4]{RESET}  About")
-    print(f"{ACCENT}[5]{RESET}  Exit")
+    ui.option(1, "Create a new project")
+    ui.option(2, "Browse templates")
+    ui.option(3, "Settings")
+    ui.option(4, "About")
+    ui.option(5, "Exit")
 
     print()
 
@@ -40,3 +32,38 @@ def get_menu_choice() -> int:
             print()
             print(f"{HIGHLIGHT}Exiting CodeBuzz Scaffold{RESET}")
             raise SystemExit
+
+
+def handle_menu_choice(choice: int) -> bool:
+    if choice == 1:
+        ui.accent("Create a new project selected.")
+    elif choice == 2:
+        ui.accent("Browse templates selected.")
+    elif choice == 3:
+        ui.accent("Settings selected.")
+    elif choice == 4:
+        show_about()
+    elif choice == 5:
+        ui.exit_app()
+        return False
+
+    return True
+
+
+def show_about() -> None:
+    ui.header()
+
+    ui.primary("About CodeBuzz Scaffold")
+    print()
+
+    print("CodeBuzz Scaffold is a project scaffolding")
+    print("tool designed to make creating new projects")
+    print("quick, consistent, and easy.")
+
+    print()
+    ui.accent(f"Version: {__version__}")
+    ui.accent("Author: Advait Muley")
+
+    print()
+    ui.muted("Press Enter to return to the main menu...")
+    input()
