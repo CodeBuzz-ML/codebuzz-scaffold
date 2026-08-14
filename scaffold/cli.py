@@ -1,6 +1,6 @@
 import argparse
 
-from scaffold import __version__
+from scaffold import __version__, ui
 from scaffold.ui.menu import get_menu_choice, handle_menu_choice, show_menu
 
 
@@ -23,6 +23,7 @@ def build_parser() -> argparse.ArgumentParser:
 def run_interactive() -> None:
 
     while True:
+        ui.header(50)
         show_menu()
         choice = get_menu_choice()
 

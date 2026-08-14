@@ -1,3 +1,5 @@
+import subprocess
+
 from scaffold.ui.colors import (
     ACCENT,
     BOLD,
@@ -53,6 +55,7 @@ def muted(text: str) -> None:
 
 
 def header(width: int = 44) -> None:
+    clear()
     print()
     print(f"{PRIMARY}{BOLD}╭{'─' * width}╮")
     print(f"{PRIMARY}{BOLD}│{'CODEBUZZ SCAFFOLD':^{width}}│")
@@ -65,3 +68,8 @@ def exit_app() -> None:
     print()
     accent("Exiting CodeBuzz Scaffold...")
     print()
+
+
+# Define function to clear the screen
+def clear() -> None:
+    subprocess.run(["clear"], check=False)

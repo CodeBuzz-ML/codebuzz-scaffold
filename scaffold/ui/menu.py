@@ -1,7 +1,8 @@
-from scaffold import __version__, ui
+from scaffold import ui
+from scaffold.actions import about
 from scaffold.ui.colors import ACCENT, ERROR, HIGHLIGHT, RESET
 
-ui.header(50)  # Display the header with a width of 50
+ui.clear()
 
 
 def show_menu() -> None:
@@ -36,34 +37,20 @@ def get_menu_choice() -> int:
 
 def handle_menu_choice(choice: int) -> bool:
     if choice == 1:
+        ui.clear()
         ui.accent("Create a new project selected.")
     elif choice == 2:
+        ui.clear()
         ui.accent("Browse templates selected.")
     elif choice == 3:
+        ui.clear()
         ui.accent("Settings selected.")
     elif choice == 4:
-        show_about()
+        ui.clear()
+        about.show_about()
     elif choice == 5:
+        ui.clear()
         ui.exit_app()
         return False
 
     return True
-
-
-def show_about() -> None:
-    ui.header()
-
-    ui.primary("About CodeBuzz Scaffold")
-    print()
-
-    print("CodeBuzz Scaffold is a project scaffolding")
-    print("tool designed to make creating new projects")
-    print("quick, consistent, and easy.")
-
-    print()
-    ui.accent(f"Version: {__version__}")
-    ui.accent("Author: Advait Muley")
-
-    print()
-    ui.muted("Press Enter to return to the main menu...")
-    input()
