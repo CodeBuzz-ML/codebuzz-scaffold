@@ -1,0 +1,2 @@
+DEFAULT_PROJECT_LOCATION = "~/Documents"
+DEFAULT_TEMPLATE = "python-cli"
